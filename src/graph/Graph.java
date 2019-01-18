@@ -12,28 +12,37 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 
 	private TreeSet<Node<T>> nodi;
 	private TreeSet<Edge<T>> archi;
+	private Integer numNodi;
 
 	// costruttore
 
 	public Graph() {
 		this.nodi = new TreeSet<Node<T>>();
 		this.archi = new TreeSet<Edge<T>>();
+		this.numNodi = 0;
 	}
 
 	// metodi
 
 	@Override
 	public void insertNode(Node<T> u) {
-		if(!this.nodi.contains(u))
+		if(!this.nodi.contains(u)) {
 			this.nodi.add(u);
+			this.numNodi++;
+			u.setID(numNodi);
+		}
 	}
 
 	@Override
 	public void deleteNode(Node<T> u) {
-		for(Edge<T> uv: this.archi)
-			if(uv.connectEdgeNode(u))	//se nell'arco uv connette il nodo v a un altro nodo
-				this.deleteEdge(uv);	//allora elimina l'arco uv
-		this.nodi.remove(u);		
+		if(this.nodi.contains(u)) {
+			for(Edge<T> uv: this.archi)
+				if(uv.connectEdgeNode(u))	//se nell'arco uv connette il nodo v a un altro nodo
+					this.deleteEdge(uv);	//allora elimina l'arco uv
+			this.nodi.remove(u);
+			this.numNodi--;
+		}
+			
 	}
 
 	@Override
@@ -50,7 +59,7 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 	}
 
 	@Override
-	public TreeSet<Node<T>> adj(Node<T> u) {
+	public TreeSet<Node<T>> adj(Node<T> u) {//ritorna insieme di adiacenza del nodo u
 		//ritorna null se U non esiste
 		TreeSet<Node<T>> adiacenti = new TreeSet<Node<T>>();
 		if(this.nodi.contains(u))

@@ -4,20 +4,25 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 
 	//campi
 
-	private T element;
+	private T name;
+	private Integer id;	//se id = 0 il nodo non è stato ancora aggiunto al grafo
 	private Double x;
 	private Double y;
 
 	// costruttori
 
-	public Node(T e){
-		this.element = e;
+	public Node(T name){
+		this.name = e;
+		this.x = 0.;
+		this.y = 0.;
+		this.id = 0;
 	}
 
-	public Node(T e, Double x, Double y) {
-		this.element = e;
+	public Node(T name, Double x, Double y) {
+		this.name = e;
 		this.x = x;
 		this.y = y;
+		this.id = 0;
 	}
 
 	// setters
@@ -35,30 +40,38 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 		this.y = y;
 	}
 
+	public void setID(Integer id) {
+		this.id = id;
+	}
+
 	// getters
 
-	public T getElement(){
-		return this.element;
+	public T getname(){
+		return this.name;
 	}
 
 	public Double getX() {
-		return x;
+		return this.x;
 	}
 
 
 	public Double getY() {
-		return y;
+		return this.y;
+	}
+
+	public Integer getID() {
+		return this.id;
 	}
 
 	// altro
 
 	@Override
 	public int compareTo(Node<T> o) {
-		return this.element.compareTo(o.element);
+		return this.name.compareTo(o.name);
 	}
 
 	@Override
 	public String toString() {
-		return ( this.element.toString() + " (" + this.x + ", " + this.y + ")" );
+		return ( this.name.toString() + " (" + this.x + ", " + this.y + ")" );
 	}
 }
