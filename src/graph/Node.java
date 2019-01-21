@@ -12,14 +12,14 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 	// costruttori
 
 	public Node(T name){
-		this.name = e;
+		this.name = name;
 		this.x = 0.;
 		this.y = 0.;
 		this.id = 0;
 	}
 
 	public Node(T name, Double x, Double y) {
-		this.name = e;
+		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.id = 0;
@@ -46,7 +46,7 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 
 	// getters
 
-	public T getname(){
+	public T getElement(){
 		return this.name;
 	}
 
