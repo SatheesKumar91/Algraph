@@ -1,7 +1,7 @@
 package graph;
 
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -13,7 +13,7 @@ import javafx.scene.transform.Translate;
 
 public class Graphica<T extends Comparable<T>> {
 	// funzione richiamata all'interno di graph
-	public Pane disegna(Graph<T> graph, Double raggio, Paint c1, Paint c2) {
+	public Pane disegna(Graph<T> graph, Double raggio, Color c1, Color c2) {
 		Double font = raggio*2;
 		Pane console = new Pane();
 		for (Edge<T> edge : graph.E()) {
@@ -27,9 +27,6 @@ public class Graphica<T extends Comparable<T>> {
 		}
 		
 		for (Node<T> node : graph.V()) {
-			//coordinate in cui dovrei disegnare il nodo
-			Double x = node.getX();
-			Double y = node.getY();
 			//creo uno stackpane per il centro del testo
 			StackPane stackPane = new StackPane();
 			//per ogni nodo inserisci un cerchio ...
@@ -45,15 +42,17 @@ public class Graphica<T extends Comparable<T>> {
 			textNode.setFont(new Font(font));
 			//gestisco lo stackpane
 			stackPane.getChildren().addAll(circle, textNode);
-			//stackPane.setTranslateX(x);
-			//stackPane.setTranslateY(y);
-			System.out.println("x = "+x+" Translated x = "+stackPane.getTranslateX());
-			System.out.println("y = "+y+" Translated y = "+stackPane.getTranslateY());
+			//traslazione
+			stackPane.setTranslateX(node.getX() - raggio);
+			stackPane.setTranslateY(node.getY() - raggio);
+			//aggiungo un cerchio al centro per fare il test
+			Circle centroTest = new Circle(node.getX(), node.getY(), 5.);
+			centroTest.setFill(Color.BLUE);
 			//aggiungo alla console che verrà restituita
 		   	console.getChildren().addAll(stackPane);
-			//console.getChildren().addAll(circle, textNode);
+			//aggiungo il cerchio di test
+			console.getChildren().addAll(centroTest);
 		}
 		return console;
 	}
-
 }
