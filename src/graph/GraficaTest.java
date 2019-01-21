@@ -7,12 +7,12 @@ import javafx.scene.layout.Pane;
 
 public class GraficaTest extends Application {
 	
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    @Override
-    public void start(Stage primaryStage) {
+	public static void main(String[] args) {
+	launch(args);
+	}
+
+	@Override
+	public void start(Stage primaryStage) {
 		Graph<String> g1 = new Graph<String>();
 		
 		Node<String> a = new Node<String>("A", 250., 100.);
@@ -32,12 +32,11 @@ public class GraficaTest extends Application {
 		Pane console = new Pane();
 		console = g1.draw(50.);
 		Scene scene = new Scene(console);
-    	
-    	primaryStage.setTitle("Welcome to FX!");
-        primaryStage.setHeight(Height);
-        primaryStage.setWidth(Width);
-    	primaryStage.setScene(scene);
-        primaryStage.show();
+		primaryStage.setTitle("Welcome to FX!");
+		primaryStage.setHeight(Height);
+		primaryStage.setWidth(Width);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 }

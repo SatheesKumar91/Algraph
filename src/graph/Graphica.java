@@ -6,6 +6,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+//per rendere il testo centrato e il cerchio nella giusta posizione
+import javafx.scene.layout.StackPane;
+import javafx.scene.transform.Translate; 
+
 
 public class Graphica<T extends Comparable<T>> {
 	// funzione richiamata all'interno di graph
@@ -14,28 +18,40 @@ public class Graphica<T extends Comparable<T>> {
 		Pane console = new Pane();
 		for (Edge<T> edge : graph.E()) {
 			//per ogni arco inserisci una linea e un testo per i pesi
-			Line lineToAdd = new Line(edge.getUX(), edge.getUY(), edge.getVX(), edge.getVY());
+			Line line = new Line(edge.getUX(), edge.getUY(), edge.getVX(), edge.getVY());
 			Text textEdge = new Text(""+edge.getWeight());
 			textEdge.setX((edge.getNodeU().getX()+edge.getNodeV().getX())/2);
 			textEdge.setY((edge.getNodeU().getY()+edge.getNodeV().getY())/2);
 			textEdge.setFont(new Font(font/2));
-			console.getChildren().addAll(lineToAdd, textEdge);
+			console.getChildren().addAll(line, textEdge);
 		}
 		
 		for (Node<T> node : graph.V()) {
+			//coordinate in cui dovrei disegnare il nodo
+			Double x = node.getX();
+			Double y = node.getY();
+			//creo uno stackpane per il centro del testo
+			StackPane stackPane = new StackPane();
 			//per ogni nodo inserisci un cerchio ...
-			Circle circleToAdd = new Circle(node.getX(), node.getY(), raggio);
-			circleToAdd.setFill(c1);
-			circleToAdd.setStroke(c2);
-			circleToAdd.setStrokeWidth(1.);
+			Circle circle = new Circle();
+			circle.setRadius(raggio);
+			circle.setFill(c1);
+			circle.setStroke(c2);
+			circle.setStrokeWidth(1.);
 			// ... e un testo per i nomi dei nodi
 			Text textNode = new Text(""+node.getElement());
-			textNode.setX(node.getX()); //- raggio * a/b
-			textNode.setY(node.getY()); //+ raggio * c/d
+			//textNode.setX(node.getX());
+			//textNode.setY(node.getY());
 			textNode.setFont(new Font(font));
-			//textNode.setStyle("-fx-alignment: CENTER-LEFT;");
-			
-		   	console.getChildren().addAll(circleToAdd, textNode);
+			//gestisco lo stackpane
+			stackPane.getChildren().addAll(circle, textNode);
+			//stackPane.setTranslateX(x);
+			//stackPane.setTranslateY(y);
+			System.out.println("x = "+x+" Translated x = "+stackPane.getTranslateX());
+			System.out.println("y = "+y+" Translated y = "+stackPane.getTranslateY());
+			//aggiungo alla console che verrà restituita
+		   	console.getChildren().addAll(stackPane);
+			//console.getChildren().addAll(circle, textNode);
 		}
 		return console;
 	}
