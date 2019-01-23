@@ -1,4 +1,4 @@
-package graph;
+/*package graph;
 
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -41,3 +41,4 @@ public class GraficaTest extends Application {
 	}
 
 }
+*/

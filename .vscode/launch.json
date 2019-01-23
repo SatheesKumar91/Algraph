@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - random2",
+            "request": "launch",
+            "mainClass": "graph.random2",
+            "projectName": "Algraph_61ad3293"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GraphRandom",
+            "request": "launch",
+            "mainClass": "graph.GraphRandom",
+            "projectName": "Algraph_61ad3293"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GraphTest",
+            "request": "launch",
+            "mainClass": "graph.GraphTest"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RandomGraph",
+            "request": "launch",
+            "mainClass": "graph.RandomGraph"
+        }
+    ]
+}

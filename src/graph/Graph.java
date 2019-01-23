@@ -47,6 +47,7 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 
 	@Override
 	public void insertEdge(Node<T> u, Node<T> v, Integer peso) {
+		
 		if(this.nodi.contains(u) && this.nodi.contains(v)) {
 			Edge<T> uv = new Edge<T>(u, v, peso);
 			this.archi.add(uv);

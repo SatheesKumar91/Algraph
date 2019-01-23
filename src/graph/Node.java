@@ -10,16 +10,27 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 	private Double y;
 
 	// costruttori
+/*	public Node(T name, int id)
+	{
+		this.name = name;
+		this.x = 0.;
+		this.y = 0.;
+		this.id = id;
+		  
+	}
+	
+*/
 
 	public Node(T name){
-		this.name = e;
+		this.name = name;
 		this.x = 0.;
 		this.y = 0.;
 		this.id = 0;
+		  
 	}
 
 	public Node(T name, Double x, Double y) {
-		this.name = e;
+		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.id = 0;

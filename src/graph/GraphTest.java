@@ -1,10 +1,12 @@
 package graph;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class GraphTest {
 
 	public static void main(String[] args) {
 		Graph<String> g1 = new Graph<String>();
 		
-		Node<String> a = new Node<String>("A", 1., 2.);
+	/*	Node<String> a = new Node<String>("A", 1., 2.);
 		Node<String> b = new Node<String>("B", 3., 4.);
 		Node<String> c = new Node<String>("C", 5., 6.);
 		Node<String> d = new Node<String>("D", 7., 8.);
@@ -31,8 +33,15 @@ public class GraphTest {
 		
 		//arco che rompe il vincolo 2-colorabile
 		g1.insertEdge(b, c, 9);
-		
+*/		
 		g1.print();
+
+//		int nNodi = ThreadLocalRandom.current().nextInt(2, 6 + 1);
+
+//		System.out.println(nNodi);
+
+
+
 	}
 
 }
