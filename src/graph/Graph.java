@@ -101,6 +101,10 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 
 	public Pane draw(Double raggio, Double width, Double height) {
 		Graphica<T> dg = new Graphica<T>();
+		/*se voglio disegnarlo comunque di default,
+		ignorando le coordinate inserite dall'utente
+		tolgo questo commento:*/
+		//dg.coordDefault(this);
 		dg.calcCoordNode(this, width/2, height/2);
 		Pane console = new Pane();
 		console = dg.disegna(this, raggio, Color.WHITE, Color.BLACK);

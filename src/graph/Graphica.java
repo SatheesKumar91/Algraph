@@ -71,4 +71,11 @@ public class Graphica<T extends Comparable<T>> {
 		}
 		return console;
 	}
+	//funzione ancora non utilizzata ma utile per il pulsante "ridisegna"
+	//serve per ripristinare tutte le coordinate al valore di default
+	//controllare che sia lo stesso anche in Node.java e nella funzione calcCoordNode(...) di questo file
+	public void coordDefault(Graph<T> graph) {
+		for (Node<T> node : graph.V())
+			node.setXsetY(-100., -100.);
+	}
 }
