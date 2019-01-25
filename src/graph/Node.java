@@ -2,6 +2,9 @@ package graph;
 
 public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 
+//controllare che sia uguale anche in ./Graphica.java
+public final Double DEFAULT = -100.;
+
 	//campi
 
 	private T name;
@@ -13,8 +16,9 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 
 	public Node(T name){
 		this.name = name;
-		this.x = 0.;
-		this.y = 0.;
+		//controllare che sia uguale anche in ./Graphica.java
+		this.x = -100.;
+		this.y = -100.;
 		this.id = 0;
 	}
 

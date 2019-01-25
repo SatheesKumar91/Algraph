@@ -10,16 +10,16 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Translate; 
 
-
 public class Graphica<T extends Comparable<T>> {
+
 	//funzione che calcola le coordinate dei nodi se non sono state già settate o modificate
 	public void calcCoordNode(Graph<T> graph, Double centerX, Double centerY) {
 		Double n = Math.PI *2/ graph.getNumNodi();
 		Double raggio = (Math.min(centerX, centerY))*2/3;
-		//System.out.print("centerX = "+centerX+", centerY = "+centerY+", raggio = "+raggio);
 		for (Node<T> node : graph.V()) {
 			//se le coordinate sono quelle di Default
-			if((node.getX() == 0.) && (node.getY() == 0.)) {
+			//controllare che siano le stesse anche in Node.java
+			if( (node.getX() == -100.) && (node.getY() == -100.) ) {
 				//calcola nuove coordinate per il nodo
 				node.setX( centerX + raggio * Math.cos( n * node.getID() ) );
 				node.setY( centerY - raggio * Math.sin( n * node.getID() ) );
