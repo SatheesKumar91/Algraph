@@ -99,9 +99,9 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 		System.out.println(" } ");
 	}
 
-	public Pane draw(Double raggio, Double height, Double width) {
+	public Pane draw(Double raggio, Double width, Double height) {
 		Graphica<T> dg = new Graphica<T>();
-		dg.calcCoordNode(this, height/2, width/2);
+		dg.calcCoordNode(this, width/2, height/2);
 		Pane console = new Pane();
 		console = dg.disegna(this, raggio, Color.WHITE, Color.BLACK);
 		return console;
