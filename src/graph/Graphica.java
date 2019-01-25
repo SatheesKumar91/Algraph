@@ -12,9 +12,29 @@ import javafx.scene.transform.Translate;
 
 
 public class Graphica<T extends Comparable<T>> {
+	//funzione che calcola le coordinate dei nodi se non sono state già settate o modificate
+	public void calcCoordNode(Graph<T> graph, Double centerX, Double centerY) {
+		Integer n = graph.getNumNodi();
+		Double raggio = Math.min(centerX, centerY)*1/2;
+		for (Node<T> node : graph.V()) {
+			//se le coordinate sono quelle di Default
+			if((node.getX() == 0.) && (node.getY() == 0.)) {
+				//calcola nuove coordinate per il nodo
+				node.setX(centerX + raggio);
+				node.setY(centerY + raggio);
+				//Math.cos( Math.PI/3 ), Math.sin( Math.PI/3 )
+			}
+			///*
+			System.out.print(node.getID() + "\t");
+			System.out.print(node.getElement() + " = (\t");
+			System.out.print(node.getX() + ",\t");
+			System.out.println(node.getY() + ")");
+			//*/
+		}
+	}
 	// funzione richiamata all'interno di graph
 	public Pane disegna(Graph<T> graph, Double raggio, Color c1, Color c2) {
-		Double font = raggio*2;
+		Double font = raggio*3/2;	//se il font è troppo grande rispetto al raggio abbiamo un problema con il centro dello stackpane che non coincide con il centro del cerchio
 		Pane console = new Pane();
 		for (Edge<T> edge : graph.E()) {
 			//per ogni arco inserisci una linea e un testo per i pesi
@@ -42,16 +62,11 @@ public class Graphica<T extends Comparable<T>> {
 			textNode.setFont(new Font(font));
 			//gestisco lo stackpane
 			stackPane.getChildren().addAll(circle, textNode);
-			//traslazione
+			//traslazione (ricordiamoci il centro della traslazione è il centro dello stackpane che dovrebbe essere anche il centro del raggio)
 			stackPane.setTranslateX(node.getX() - raggio);
 			stackPane.setTranslateY(node.getY() - raggio);
-			//aggiungo un cerchio al centro per fare il test
-			Circle centroTest = new Circle(node.getX(), node.getY(), 5.);
-			centroTest.setFill(Color.BLUE);
 			//aggiungo alla console che verrà restituita
 		   	console.getChildren().addAll(stackPane);
-			//aggiungo il cerchio di test
-			console.getChildren().addAll(centroTest);
 		}
 		return console;
 	}

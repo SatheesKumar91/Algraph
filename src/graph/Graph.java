@@ -21,6 +21,11 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 		this.archi = new TreeSet<Edge<T>>();
 		this.numNodi = 0;
 	}
+	//getters
+	
+	public Integer getNumNodi() {
+		return this.numNodi;
+	}
 
 	// metodi
 
@@ -94,8 +99,9 @@ public class Graph<T extends Comparable<T>> implements IGraph<T> {
 		System.out.println(" } ");
 	}
 
-	public Pane draw(Double raggio) {
+	public Pane draw(Double raggio, Double height, Double width) {
 		Graphica<T> dg = new Graphica<T>();
+		dg.calcCoordNode(this, height/2, width/2);
 		Pane console = new Pane();
 		console = dg.disegna(this, raggio, Color.WHITE, Color.BLACK);
 		return console;

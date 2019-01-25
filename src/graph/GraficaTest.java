@@ -15,9 +15,9 @@ public class GraficaTest extends Application {
 	public void start(Stage primaryStage) {
 		Graph<String> g1 = new Graph<String>();
 		
-		Node<String> a = new Node<String>("A", 250., 100.);
-		Node<String> b = new Node<String>("B", 100., 300.);
-		Node<String> c = new Node<String>("C", 400., 300.);
+		Node<String> a = new Node<String>("A");
+		Node<String> b = new Node<String>("B");
+		Node<String> c = new Node<String>("C");
 		
 		g1.insertNode(a);
 		g1.insertNode(b);
@@ -30,7 +30,7 @@ public class GraficaTest extends Application {
 		Double Height = 500.;
 		Double Width = 500.;
 		Pane console = new Pane();
-		console = g1.draw(50.);
+		console = g1.draw(50., Height, Width);
 		Scene scene = new Scene(console);
 		primaryStage.setTitle("Welcome to FX!");
 		primaryStage.setHeight(Height);
